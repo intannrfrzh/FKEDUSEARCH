@@ -194,7 +194,7 @@
 
                                 include("../../db/database.php");
                                 $select_e = "SELECT * FROM user_database
-                               JOIN expert ON user_database.Account_ID = expert.Account_ID
+                               JOIN experts ON user_database.Account_ID = experts.Account_ID
                                ";
                                 $result = $connect->query($select_e);
 
