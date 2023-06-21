@@ -1,10 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>COMPLAINT REPORT</title>
-    <link rel="stylesheet" href="../../asset/style/style.css">
+    <!-- MDB icon -->
+    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+    <!-- MDB -->
+    <link rel="stylesheet" href="../../Bootstrap//mdb.min.css" />
+
+    <!-- css link -->
+    <link rel="stylesheet" href="../../asset/style/newstyle.css">
+
+    <!--ionicon links-->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
     <script src="https://unpkg.com/ionicons@latest/dist/ionicons.js"></script>
 
     <!-- Include Google Charts library -->
@@ -67,45 +85,48 @@
 </head>
 
 <body>
-    <header class="header">
-        <div class="header_container">
-            <div class="header__inner">
-                <!-- <img src="asset/logo.png" alt="logo">-->
+    <!-- Start your project here-->
 
-                <nav class="nav">
-                    <a class="nav__link" href="">Home Page</a>
-                    <a> | </a>
-                    <a class="nav__link" href="">Discussion Board</a>
-                    <a> | </a>
-                    <a class="nav__link" href="">Complaints</a>
-                    <a> | </a>
-                    <a class="nav__link" href="">Report</a>
-                    <a> | </a>
-                    <a class="nav__link" href="">Profile</a>
-                </nav>
+    <!-- heading with navbar -->
 
-            </div>
-        </div>
-    </header>
+    <?php
 
-    <div class="table-content">
-        <!-- Display the chart -->
+    include_once '../../asset/bar/heading.html';
+    ?>
+
+    <!-- main content -->
+    <center>
+        <!--outer box-->
+        <div class="container-content">
+
+            <!--inner box-->
+            <div class="inner-content">
+                <!--start content here-->
+                <!-- Display the chart -->
         <div id="chart_div"></div>
-    </div>
-
-    <footer class="footer">
-        <div class="footer_container">
-            <div class="footer__inner">
-                <center> ©FK-EduSearch.com.my </center>
-            </div>
         </div>
-    </footer>
 
-    <!-- Load the Google Charts library -->
-    <script type="text/javascript">
-        google.charts.load('current', { 'packages': ['corechart'] });
-        google.charts.setOnLoadCallback(drawChart);
-    </script>
+</div>
+
+
+<!--footer-->
+<footer class="footer">
+    <div class="footer_container">
+        <div class="footer__inner">
+            ©FK-EduSearch.com.my
+        </div>
+    </div>
+</center>
+</footer>
+
+<style>
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+</style>
 </body>
-
-</html>

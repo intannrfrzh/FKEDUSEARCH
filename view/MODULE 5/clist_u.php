@@ -1,53 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>COMPLAINT LIST U</title>
-    <link rel="stylesheet" href="../style/style.css">
-    <script src="https://unpkg.com/ionicons@latest/dist/ionicons.js"></script>
+    <!-- MDB icon -->
+    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+    <!-- MDB -->
+    <link rel="stylesheet" href="../../Bootstrap//mdb.min.css" />
 
-    <style>
-        table, th, td {
-        border: 1px solid black;
-    }
-</style>
+    <!-- css link -->
+    <link rel="stylesheet" href="../../asset/style/newstyle.css">
+
+    <!--ionicon links-->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 
 <body>
+    <!-- Start your project here-->
 
-<header class="header">
-    <div class="header_container">
-        <div class="header__inner">
-        <!-- <img src="asset/logo.png" alt="logo">-->
+    <!-- heading with navbar -->
+    <?php
 
-        <nav class="nav">
-            <a class="nav__link" href="">Home Page</a>
-            <a> | </a>
-            <a class="nav__link" href="">Discussion Board</a>
-            <a> | </a>
-            <a class="nav__link" href="">Complaints</a>
-            <a> | </a>
-            <a class="nav__link" href="">Report</a>
-            <a> | </a>
-            <a class="nav__link" href="">Profile</a>
-        </nav>
+    include_once '../../asset/bar/heading.html';
+    ?>
 
-        </div>
-    </div>
-</header>
+    <!-- main content -->
+    <center>
+        <!--outer box-->
+        <div class="container-content">
+
+            <!--inner box-->
+            <div class="inner-content">
+                <!--start content here-->
 
     <form id="manage_complaint" class="table_content">
         <center><h1>COMPLAINTS LIST</h1></center>
+        <hr class="border border-dark border-2 opacity-50" style="width: 70%;">
         
-
-    
 
 <center><button type="button"><span  class="button__icon"><a href="cadd_u.php"><ion-icon name="add-circle-sharp"></ion-icon></a></span></button></center><br><br>
 
-
     <center>
-    <table>
+    <table class="table table-success table-striped-columns table-bordered border-black">
         <thead>
         <tr>
             <th>NO</th>
@@ -64,7 +67,7 @@
         <tbody id="table-body">
             
         <?php 
-        include("../db/database.php");
+        include("../../db/database.php");
 
             $Q="Select * from complaint order by ComplaintID desc";
             $re=mysqli_query($connect,$Q);
@@ -90,43 +93,6 @@
             $i++;
             }
             ?>
-            <?php
-            //import data from database
-            /*try{
-                require"../db/database.php";
-                $stmt = $connect->prepare("SELECT * FROM complaint ORDER BY ComplaintID DESC");
-				$stmt->execute();
-				//$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-				$count = 1;
-
-				//foreach ($result as $row) :
-            
-            ?>
-
-        <tr>
-        <td><?php echo $count++; ?></td>
-            <td><?php echo $row['name']; ?></td>
-            <td><?php echo $row['expert_id']; ?></td>
-            <td><?php echo $row['complaint_id']; ?></td>
-            <td><?php echo $row['date']; ?></td>
-            <td><?php echo $row['time']; ?></td>
-            <td><?php echo $row['complaint_type']; ?></td>
-            <td><?php echo $row['desc']; ?></td>
-            <td><?php echo $row['complaint_stat']; ?></td>
-            <td>
-                <a href="#" class="edit_btn" >Edit</a>
-                <a href="#" class="del_btn">Delete</a>
-                <a href="#" class="view_btn">View</a>
-
-        </tr>
-        <?php
-			//endforeach;
-        }catch (PDOException $e) {
-			    echo $e->getMessage();
-			}*/
-		?>
-        <script>
-    
         </tbody>
             
     </table>
@@ -134,12 +100,18 @@
 
     </form>
 
-        <footer class="footer">
-            <div class="footer__inner">
-            <center> ©FK-EduSearch.com.my </center>
-            </div>
-        </footer>
+</div>
 
+</div>
+
+<footer class="footer">
+<div class="footer_container">
+    <div class="footer__inner">
+        <center> ©FK-EduSearch.com.my </center>
+    </div>
+</div>
+</center>
+</footer>
 </body>
 
 
