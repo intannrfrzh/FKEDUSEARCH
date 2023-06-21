@@ -22,7 +22,7 @@ $description= $_GET['description'] ;
 
   
 
-include("../db/database.php");
+include("../../db/database.php");
 
 if (isset($_POST['submit']) && isset($_GET['id']) && isset($_POST['Complaint_Type'])) {
     $ComplaintID = $_GET['id'];

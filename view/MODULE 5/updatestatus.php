@@ -23,7 +23,7 @@ if (isset($_POST['submit']) && isset($_GET['id']) && isset($_POST['Complaint_Sta
 }*/
 
 
-include("../db/database.php");
+include("../../db/database.php");
 
 if (isset($_POST['submit']) && isset($_GET['id']) && isset($_POST['Complaint_Status'])) {
     $ComplaintID = $_GET['id'];

@@ -51,6 +51,23 @@
 </head>
 
 <body>
+    <!-- Start your project here-->
+
+    <!-- heading with navbar -->
+
+    <?php
+
+    include_once '../../asset/bar/heading.html';
+    ?>
+
+    <!-- main content -->
+    <center>
+        <!--outer box-->
+        <div class="container-content">
+
+            <!--inner box-->
+            <div class="inner-content">
+                <!--start content here-->
 
 <?php
 include("../../db/database.php");
@@ -78,26 +95,6 @@ $result = $connect->query("SELECT * FROM complaint WHERE ComplaintID ='$Complain
 
              ?>
 
-<header class="header">
-    <div class="header_container">
-        <div class="header__inner">
-        <!-- <img src="asset/logo.png" alt="logo">-->
-
-        <nav class="nav">
-            <a class="nav__link" href="">Home Page</a>
-            <a> | </a>
-            <a class="nav__link" href="">Discussion Board</a>
-            <a> | </a>
-            <a class="nav__link" href="">Complaints</a>
-            <a> | </a>
-            <a class="nav__link" href="">Report</a>
-            <a> | </a>
-            <a class="nav__link" href="">Profile</a>
-        </nav>
-
-        </div>
-    </div>
-</header>
 
 <form id="manage_complaint" class="table_content" action="updatevalidate.php?id=<?php echo $complaint['ComplaintID']; ?>" method="post">
     <center>

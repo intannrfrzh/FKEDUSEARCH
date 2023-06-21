@@ -1,5 +1,5 @@
 <?php 
-include("../db/database.php");
+include("../../db/database.php");
 $ComplaintID = $_GET['id'] ;
 
 $delete = "DELETE FROM complaint WHERE ComplaintID ='$ComplaintID'";
