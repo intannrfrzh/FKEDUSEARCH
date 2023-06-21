@@ -12,8 +12,8 @@
 *template report 
 -*-piechart, but you can change it to whatever you want
 *template table 
--*- please add <table class="table table-success table-striped-columns table-bordered border-black">
--*- please add <tbody id="table-body">
+-*- please add <*table class="table table-success table-striped-columns table-bordered border-black"> -----delete the * to use it-----
+-*- please add <*tbody id="table-body"> -----delete the * to use it-----
 
 !!!STYLING!!!
 *for the form, the green box will change width and size based on the content of the form.
