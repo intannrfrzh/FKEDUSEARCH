@@ -4,69 +4,78 @@
 <head>
     <meta charset="UTF-8">
     <title>module4</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="module4.css">
     <script src="https://unpkg.com/ionicons@latest/dist/ionicons.js"></script>
-    <style>
-        table, th, td{
-        border: 2px solid #96be25;
-        border-collapse: collapse;
-        }
-    </style>
+
 </head>
 
 <body>
 
-<header class="header">
-    <div class="header_container">
-        <div class="header__inner">
-        <!-- <img src="asset/logo.png" alt="logo">-->
-        <nav class="nav">
-            <a class="nav__link" href="">Home Page</a>
-            <a> | </a>
-            <a class="nav__link" href="">Discussion Board</a>
-            <a> | </a>
-            <a class="nav__link" href="">Complaints</a>
-            <a> | </a>
-            <a class="nav__link" href="">Report</a>
-            <a> | </a>
-            <a class="nav__link" href="">Profile</a>
-        </nav>
+    <header  class="table_content3">
+        <div class="header">
+            <nav class="">
+                <a class="" href="">Home Page </a>
+                <a class="" href="">Discussion Board </a>
+                <a class="" href="">Complaints </a>
+                <a class="" href="http://localhost/tsetinterfaceweb/MODULE%204/module4.php">Report </a>
+                <a class="" href="">Profile</a>
+            </nav>
         </div>
-    </div>
-</header>
+    </header>
 
-    <form id="manage_user" class="table_content" action='searchmodule4.php' method="post">
-        <center><h1>Report and Analytics</h1></center>
+    <div class="table_content2">
+    <form id="manage_user" action='module4chart.php' method="post">
         <center>
-        <form>
-        
-        <input
-            type="text"
-            name="searchname"
-            id="searchname"
-            placeholder="type name to search"
-        >
-        <button type="submit" class="btn">SEARCH</button>
+            <h1>Report and Analytics</h1>
+        </center>
+        <center>
+            <br><br><br><br><br><br><br>
+            <?php
+            include("../db/database.php");
+            $select = "SELECT * FROM reportlist";
+            $result = mysqli_query($connect, $select);
+            ?>
+            <div>
+                <?php if (mysqli_num_rows($result) > 0) { ?>
 
-        <br><br><br><br>
-        <table>
-            <tr>
-                <th colspan="2">User Activity ID</th>
-            </tr>
-            <tr>
-                <td>User 1</td>
-                <td><a class="nav__link" href="">View</a></td>
-        </table>
+                    <table>
+                        <tr>
+                            <td class="tgap">User Activity</td>
+                            <td class="tgap">Action</td>
+                            <td class="tgap">Status</td>
+                        </tr>
+                        <?php
+                        while ($row = mysqli_fetch_assoc($result)) { ?>
+                            <tr>
+                                <td><center><?php echo $row['UserActivity_ID'] ?></center></td>
+                                <td>
+                                    <center>
+                                        <button type="submit" name="submit" value="<?php echo $row['UserActivity_ID'] ?> ">View</button>
+                                        <input type="hidden" name="UserActivityID" value="<?php $row['UserActivity_ID'] ?>">
+                                    </center>
+                                </td>
+                                <td>
+                                    <center><?php echo $row['Report_Stat'] ?></center>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </table>
+            </div>
+        <?php } else {
+                    echo 'No data available';
+                } ?>
         </center>
     </form>
+    </div>
+
 
 
     <footer class="footer">
         <div class="footer__inner">
-        <center> ©FK-EduSearch.com.my </center>
+            <center> ©FK-EduSearch.com.my </center>
         </div>
     </footer>
 
 </body>
 
-
+</html>
