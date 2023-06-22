@@ -60,7 +60,7 @@
 
         <br>
         <br>
-        <center><a href="/LOGIN_PAGE.php" class="link_class">Login Account</a></center>
+        <center><a href="../../view/MODULE 1/LOGIN_PAGE.php" class="link_class">Login Account</a></center>
         
         <a href="#" class="link_class">Forgot Password</a>
         <a> | </a>
