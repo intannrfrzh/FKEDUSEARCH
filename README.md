@@ -4,6 +4,8 @@
 *add your module to the view folder
 *add any picture used in style folder stored in asset(actually used to have specific file but i got lazy and stressed finding so i just dumped there lol)
 *please check the database and tell in group if there's any changes (SUPER IMPORTANT!!!)
+*do tell if you guys accidentally delete any file or folder, or changed a few codings on other modules (i willl cry if you guys do that)
+*do tell if you guys have any problem with the code or anything else
 
 !!!TEMPLATE!!!
 ((please make sure the form has the att class="table_content", since the box styling refer to that class))

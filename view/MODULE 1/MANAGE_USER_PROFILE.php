@@ -211,7 +211,7 @@
                                             <?php echo $row['Account_ID'] ?>
                                         </td>
                                         <td>
-                                            <?php echo $row['Experts_Name']; ?>
+                                            <?php echo $row['E_name']; ?>
                                         </td>
                                         <td>
                                             <?php echo $row['UserType'] ?>
