@@ -10,7 +10,7 @@
 
 
 <?php
-    include("../db/database.php");
+    include("../../db/database.php");
     $userId = $_POST['userId'];
     $select = "SELECT * FROM reportlist WHERE UserActivity_ID = '$userId'";
 

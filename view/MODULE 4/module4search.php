@@ -15,7 +15,7 @@
     </style>
 </head>
 <?php 
-include("../db/database.php");
+include("../../db/database.php");
 
         //$ID = $_POST['name'] ;
 
