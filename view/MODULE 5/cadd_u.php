@@ -59,6 +59,11 @@
     <?php
 
     include_once '../../asset/bar/heading.html';
+    include("../../db/database.php");
+        $select = "SELECT * FROM user_database
+        JOIN complaint ON user_database.Account_ID = complaint.Account_ID
+        ";
+        $result = $connect->query($select);
     ?>
 
     <!-- main content -->
