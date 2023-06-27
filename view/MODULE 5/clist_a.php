@@ -60,9 +60,9 @@
                             <thead>
                                 <tr>
                                     <th>NO</th>
-                                    <th>Expert ID</th>
+                                    <th>Expert Name</th>
                                     <th>Complaint ID</th>
-                                    <th>DateTime</th>
+                                    <th>Date</th>
                                     <th>Complaint type</th>
                                     <th>Description</th>
                                     <th>Complaint Status</th>
@@ -85,7 +85,7 @@
                                             <?php echo $i; ?>
                                         </td>
                                         <td>
-                                            <?php echo $complaint['Experts_ID'] ?>
+                                            <?php echo $complaint['E_name'] ?>
                                         </td>
                                         <td>
                                             <?php echo $complaint['ComplaintID'] ?>

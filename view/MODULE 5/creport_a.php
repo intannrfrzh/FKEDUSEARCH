@@ -39,7 +39,7 @@
             // Fetch the data from the database
             <?php
             // Connect to the database
-            include("../db/database.php");
+            include("../../db/database.php");
 
             // Fetch the total count of complaints by day and complaint type
             $result = $connect->query("SELECT DATE(Complaint_Date) AS Day, COUNT(CASE WHEN Complaint_Type = 'Unsatisfied Experts Feedback' THEN 1 END) AS UnsatisfiedFeedbackCount, COUNT(CASE WHEN Complaint_Type = 'Wrongly Assigned Research Area' THEN 1 END) AS WronglyAssignedAreaCount FROM complaint GROUP BY Day");

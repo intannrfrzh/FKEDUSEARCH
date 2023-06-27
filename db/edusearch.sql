@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2023 at 10:42 PM
+-- Generation Time: Jun 27, 2023 at 03:42 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -34,6 +34,13 @@ CREATE TABLE `admin` (
   `Account_ID` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`Admin_Name`, `Admin_Phone_Num`, `Admin_IC`, `Account_ID`) VALUES
+('SARA', '012', '01', 'AD21001');
+
 -- --------------------------------------------------------
 
 --
@@ -45,6 +52,13 @@ CREATE TABLE `area_of_research` (
   `ResearchTopic` varchar(100) NOT NULL,
   `Total_R` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `area_of_research`
+--
+
+INSERT INTO `area_of_research` (`ResearchID`, `ResearchTopic`, `Total_R`) VALUES
+('RS001', 'DESIGN', '21');
 
 -- --------------------------------------------------------
 
@@ -73,7 +87,7 @@ CREATE TABLE `complaint` (
   `Complaint_Type` varchar(50) NOT NULL,
   `Complaint_Status` varchar(50) NOT NULL,
   `Total_C_Week` int(11) NOT NULL,
-  `Complaint_DateTime` datetime NOT NULL DEFAULT current_timestamp(),
+  `Complaint_Date` date NOT NULL,
   `c_desc` varchar(200) NOT NULL,
   `Account_ID` varchar(100) NOT NULL,
   `Admin_Name` varchar(100) NOT NULL,
@@ -112,6 +126,13 @@ CREATE TABLE `experts` (
   `Account_ID` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `experts`
+--
+
+INSERT INTO `experts` (`E_name`, `E_age`, `E_socmed`, `E_uni`, `E_course`, `E_skill`, `E_scholarship`, `E_acastat`, `Account_ID`) VALUES
+('SARA', 21, '@sarady(instagram)', 'UMP', 'DESIGN', 'ADOBE', 'YAYASAN', 'DEGREE', 'EX20011');
+
 -- --------------------------------------------------------
 
 --
@@ -133,12 +154,19 @@ CREATE TABLE `expert_publi` (
 
 CREATE TABLE `general_users` (
   `User_Name` varchar(100) NOT NULL,
-  `User_Age` varchar(100) NOT NULL,
+  `User_Age` int(11) NOT NULL,
   `User_Socmed` varchar(100) NOT NULL,
   `User_AcademicStats` varchar(100) NOT NULL,
   `ResearchID` varchar(100) NOT NULL,
   `Account_ID` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `general_users`
+--
+
+INSERT INTO `general_users` (`User_Name`, `User_Age`, `User_Socmed`, `User_AcademicStats`, `ResearchID`, `Account_ID`) VALUES
+('UMAR', 20, '@umar(instagram)', 'DEGREE', 'RS001', 'CB21001');
 
 -- --------------------------------------------------------
 
@@ -187,6 +215,16 @@ CREATE TABLE `user_database` (
   `password` varchar(100) NOT NULL,
   `UserType` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_database`
+--
+
+INSERT INTO `user_database` (`Account_ID`, `password`, `UserType`) VALUES
+('AD21001', '122', 'admin'),
+('CB2003', '123', 'guser'),
+('CB21001', '123', 'guser'),
+('EX20011', '123', 'expert');
 
 --
 -- Indexes for dumped tables
@@ -279,7 +317,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `complaint`
 --
 ALTER TABLE `complaint`
-  MODIFY `ComplaintID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ComplaintID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `expert_publi`
@@ -301,15 +339,15 @@ ALTER TABLE `posts`
 -- Constraints for table `admin`
 --
 ALTER TABLE `admin`
-  ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`Account_ID`) REFERENCES `login`.`user_database` (`Account_ID`);
+  ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`Account_ID`) REFERENCES `user_database` (`Account_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `complaint`
 --
 ALTER TABLE `complaint`
-  ADD CONSTRAINT `complaint_ibfk_1` FOREIGN KEY (`Account_ID`) REFERENCES `login`.`user_database` (`Account_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `complaint_ibfk_1` FOREIGN KEY (`Account_ID`) REFERENCES `user_database` (`Account_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `complaint_ibfk_2` FOREIGN KEY (`Admin_Name`) REFERENCES `admin` (`Admin_Name`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `complaint_ibfk_3` FOREIGN KEY (`E_name`) REFERENCES `login`.`experts` (`E_name`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `complaint_ibfk_3` FOREIGN KEY (`E_name`) REFERENCES `experts` (`E_name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `experts`
