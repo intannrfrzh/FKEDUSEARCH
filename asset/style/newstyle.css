@@ -72,9 +72,9 @@ body {
 /**table Styles**/
 .table{
     border-collapse: collapse;
-    width: 100% !important;
+    width: fit;
     height: 100% !important;
-    max-width: max-content;
+    max-width: fit-content;
     word-break: break-all;
     color: #000;
     font-size: 15px;
