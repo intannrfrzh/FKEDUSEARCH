@@ -4,8 +4,6 @@ html {
     box-sizing: border-box;
 }
 
-
-
 *,
 *:before,
 *:after {
@@ -74,9 +72,9 @@ body {
 /**table Styles**/
 .table{
     border-collapse: collapse;
-    width: fit;
+    width: 100% !important;
     height: 100% !important;
-    max-width: fit-content;
+    max-width: max-content;
     word-break: break-all;
     color: #000;
     font-size: 15px;
