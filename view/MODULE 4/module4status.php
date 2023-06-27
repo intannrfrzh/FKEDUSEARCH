@@ -12,7 +12,7 @@
 <?php
     include("../../db/database.php");
     $userId = $_POST['userId'];
-    $select = "SELECT * FROM reportlist WHERE UserActivity_ID = '$userId'";
+    $select = "SELECT * FROM reportlist WHERE USERID = '$userId'";
 
     $result = mysqli_query($connect,$select);
     $array = mysqli_fetch_assoc($result);
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $submitValue = isset($_POST["submit"]) ? $_POST["submit"] : null;
   switch ($submitValue) {
     case "resolve":
-        $update = "UPDATE reportlist SET Report_Stat='Resolved' WHERE UserActivity_ID = '$userId'";
+        $update = "UPDATE reportlist SET Report_Stat='Resolved' WHERE USERID = '$userId'";
         if(mysqli_query($connect,$update))
         {
             header("Location:module4.php");
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         break;
 
     case "onhold":
-        $update = "UPDATE reportlist SET Report_Stat='On Hold' WHERE UserActivity_ID = '$userId'";
+        $update = "UPDATE reportlist SET Report_Stat='On Hold' WHERE USERID = '$userId'";
         mysqli_select_db($connect, "login");
         if(mysqli_query($connect,$update))
         {

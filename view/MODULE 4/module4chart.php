@@ -14,23 +14,33 @@ if (isset($_POST['submit'])) {
     $stmt->bindParam(':UserActivityID', $userId, PDO::PARAM_STR);
     $stmt->execute();
     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $rowCount = $stmt->rowCount();
+    //$rowCount = $stmt->rowCount();
 
-    $select = "SELECT * FROM reportlist WHERE UserActivity_ID = '$userId'";
+    /*$select = "SELECT * FROM reportlist WHERE UserActivity_ID = '$userId'";
     $result = mysqli_query($connect,$select);
-    $array = mysqli_fetch_assoc($result);
-
+    $array = mysqli_fetch_assoc($result);*/
 
     $labels = [];
     $values1 = [];
 
     foreach ($data as $row) {
-        $labels[] = $row['count'];
+        $labels[] = $selectedUserID;
         $values1[] = $row['count'];
 
     }
 
     
+    $query = "SELECT COUNT(*) as count FROM posts WHERE USERID = :UserActivityID";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':UserActivityID', $userId, PDO::PARAM_STR);
+    $stmt->execute();
+    $data2 = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $values2 = [];
+    foreach ($data2 as $row) {
+        $values2[] = $row['count'];
+
+    }
 
     $chartData = [
         'labels' => $labels,
@@ -41,6 +51,14 @@ if (isset($_POST['submit'])) {
                     'rgba(0, 123, 255, 0.5)',
                 ],
                 'borderColor' => 'rgba(0, 123, 255, 1)',
+                'borderWidth' => 1,
+            ],
+            [
+                'data' => $values2,
+                'backgroundColor' => [
+                    'rgba(255, 0, 0, 0.5)',
+                ],
+                'borderColor' => 'rgba(255, 0, 0, 1)',
                 'borderWidth' => 1,
             ],
         ],
@@ -117,7 +135,7 @@ if (isset($_POST['submit'])) {
         
         var labels = <?php echo json_encode($chartData['labels']); ?>;
         var values1 = <?php echo json_encode($chartData['datasets'][0]['data']); ?>;
-
+        var values2 = <?php echo json_encode($chartData['datasets'][1]['data']); ?>;
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'bar',
@@ -125,12 +143,21 @@ if (isset($_POST['submit'])) {
                 labels: labels,
                 datasets: [
                     {
-                        label: 'Total',
+                        label: 'Total Comment',
                         data: values1,
                         backgroundColor: [
                             'rgba(0, 123, 255, 0.5)',
                         ],
                         borderColor: 'rgba(0, 123, 255, 1)',
+                        borderWidth: 1,
+                    },
+                    {
+                        label: 'Total Posts',
+                        data: values2,
+                        backgroundColor: [
+                            'rgba(255, 0, 0, 0.5)',
+                        ],
+                        borderColor: 'rgba(255, 0, 0, 1)',
                         borderWidth: 1,
                     },
                 ]

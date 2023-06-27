@@ -17,7 +17,7 @@
                 <a class="" href="">Home Page </a>
                 <a class="" href="">Discussion Board </a>
                 <a class="" href="">Complaints </a>
-                <a class="" href="http://localhost/tsetinterfaceweb/MODULE%204/module4.php">Report </a>
+                <a class="" href="http://localhost/FKEDUSEARCH/view/MODULE%204/module4.php">Report </a>
                 <a class="" href="">Profile</a>
             </nav>
         </div>
@@ -32,23 +32,29 @@
                 <br><br>
                 <?php
                 include("../../db/database.php");
-                $select2 = "SELECT * FROM general_users";
-                $select = "SELECT * FROM expert";
 
-                $result2 = mysqli_query($connect, $select2);
+                $select = "SELECT * FROM expert";
                 $result = mysqli_query($connect, $select);
+
+                $select2 = "SELECT * FROM general_users";
+                $result2 = mysqli_query($connect, $select2);
+
+                $select3 = "SELECT * FROM reportlist";
+                $result3 = mysqli_query($connect, $select3);
+
                 ?>
                 <div>
                     <?php if (mysqli_num_rows($result) > 0) { ?>
 
                         <table>
                             <tr>
-                                <td class="tgap">User Activity</td>
+                                <td class="tgap">Experts</td>
                                 <td class="tgap">Action</td>
                                 <td class="tgap">Status</td>
                             </tr>
                             <?php
                             while ($row = mysqli_fetch_assoc($result)) { ?>
+                            <?php $row3 = mysqli_fetch_assoc($result3) ?>
                                 <tr>
                                     <td>
                                         <center><?php echo $row['Experts_ID'] ?></center>
@@ -60,7 +66,7 @@
                                         </center>
                                     </td>
                                     <td>
-                                        <center><?php echo $row['Report_Stat'] ?></center>
+                                        <center><?php echo $row3['Report_Stat'] ?></center>
                                     </td>
                                 </tr>
                             <?php } ?>
@@ -74,24 +80,25 @@
 
                 <table>
                     <tr>
-                        <td class="tgap">User Activity</td>
+                        <td class="tgap">General Users</td>
                         <td class="tgap">Action</td>
                         <td class="tgap">Status</td>
                     </tr>
                     <?php
                     while ($row2 = mysqli_fetch_assoc($result2)) { ?>
+                    <?php $row3 = mysqli_fetch_assoc($result3) ?>
                         <tr>
                             <td>
                                 <center><?php echo $row2['User_ID'] ?></center>
                             </td>
                             <td>
                                 <center>
-                                    <button type="submit" name="submit" value="<?php echo $row2['UserActivity_ID'] ?> ">View</button>
-                                    <input type="hidden" name="UserActivityID" value="<?php $row2['UserActivity_ID'] ?>">
+                                    <button type="submit" name="submit" value="<?php echo $row2['User_ID'] ?> ">View</button>
+                                    <input type="hidden" name="UserActivityID" value="<?php $row2['User_ID'] ?>">
                                 </center>
                             </td>
                             <td>
-                                <center><?php echo $row2['Report_Stat'] ?></center>
+                                <center><?php echo $row3['Report_Stat'] ?></center>
                             </td>
                         </tr>
                     <?php } ?>
