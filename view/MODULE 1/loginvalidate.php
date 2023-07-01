@@ -19,10 +19,10 @@ $types = $_POST['type'] ;
 			// Authentication successful
 			// Start session and redirect to homepage
 			session_start();
-			$_SESSION['admin'] = $ID;
-			header("Location: MANAGE_USER_PROFILE.php");
-			//nanti tukar location ke user homepage
+			$_SESSION['user'] = $ID;
+			header("Location: ../../view/MODULE 2/view-posts.php");
 			exit();
+
 		  } else {
 
 			echo '<script>alert("Invalid email or password");</script>';
@@ -41,11 +41,10 @@ $types = $_POST['type'] ;
 			// Authentication successful
 			// Start session and redirect to homepage
 			session_start();
-			$_SESSION['adminloggedin'] = true;
-			$url = 'MANAGE_USER_PROFILE.php?ID=' . $ID;
-			header('Location: ' . $url);
-			//nanti tukar location ke expert homepage
+			$_SESSION['expert'] = $ID;
+			header("Location: ../../view/MODULE 3/HomePage.php");
 			exit();
+
 		  } else {
 			// Authentication failed
 			echo '<script>alert("Invalid email or password");</script>';
@@ -62,6 +61,7 @@ $types = $_POST['type'] ;
 			$_SESSION['admin'] = $ID;
 			header("Location: MANAGE_USER_PROFILE.php");
 			exit();
+			
 		  } else {
 			// Authentication failed
 			echo '<script>alert("Invalid email or password");</script>';

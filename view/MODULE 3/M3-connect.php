@@ -1,5 +1,5 @@
 <?php
-$con=new mysqli('localhost', 'root', '','login');
+$con=new mysqli('localhost', 'root', '','edusearch');
 
 if(!$con){
     die(mysqli_error($con));
