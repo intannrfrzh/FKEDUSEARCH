@@ -110,7 +110,7 @@ $result = $connect->query("SELECT * FROM complaint WHERE ComplaintID ='$Complain
         <textarea name="description" id="description" cols="50" rows="15" style="background-color:#67EEB5;" placeholder="<?php echo $complaint['c_desc']; ?>" readonly></textarea><br><br>
         
         <!--<input type="submit" name="submit" value="Update">&nbsp;-->
-        <a href="clist_e.php"><button type="button">Back</button></a>
+        <a href="clist_a.php"><button type="button">Back</button></a>
     </center>
 </form>
 

@@ -50,7 +50,7 @@
                     </center>
                     <hr class="border border-dark border-2 opacity-50" style="width: 70%;">
 
-                    <label><b>Report of the Week:</b></label>
+                    <label><b>Daily Report:</b></label>
                     <button type="button"><span class="button__icon"><a href="creport_a.php?"><ion-icon
                                     name="file-tray-full-outline"></ion-icon></a></span></button><br><br></left>
 
@@ -110,6 +110,9 @@
                                             <button type="button"><span class="button__icon"><a
                                                         href="cdelete_u.php?id=<?php echo $complaint['ComplaintID']; ?>"><ion-icon
                                                             name="trash-outline"></ion-icon></a></span></button>
+                                                            <button type="button"><span class="button__icon"><a
+                                                        href="cview_a.php?id=<?php echo $complaint['ComplaintID']; ?>"><ion-icon
+                                                            name="eye-outline"></ion-icon></a></span></button>
                                         </td>
 
                                     </tr>
