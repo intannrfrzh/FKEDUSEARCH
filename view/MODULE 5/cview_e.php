@@ -57,6 +57,16 @@ echo 'User ID: ' . $Account_ID;
             border-radius:12px;
         }
         
+
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
     </style>
 </head>
 
