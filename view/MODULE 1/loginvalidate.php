@@ -19,7 +19,7 @@ $types = $_POST['type'] ;
 			// Authentication successful
 			// Start session and redirect to homepage
 			session_start();
-			$_SESSION['generaluserloggedin'] = true;
+			$_SESSION['admin'] = $ID;
 			header("Location: MANAGE_USER_PROFILE.php");
 			//nanti tukar location ke user homepage
 			exit();
@@ -41,8 +41,9 @@ $types = $_POST['type'] ;
 			// Authentication successful
 			// Start session and redirect to homepage
 			session_start();
-			$_SESSION['generaluserloggedin'] = true;
-			header("Location: MANAGE_USER_PROFILE.php");
+			$_SESSION['adminloggedin'] = true;
+			$url = 'MANAGE_USER_PROFILE.php?ID=' . $ID;
+			header('Location: ' . $url);
 			//nanti tukar location ke expert homepage
 			exit();
 		  } else {
@@ -58,7 +59,7 @@ $types = $_POST['type'] ;
 			// Authentication successful
 			// Start session and redirect to homepage
 			session_start();
-			$_SESSION['generaluserloggedin'] = true;
+			$_SESSION['admin'] = $ID;
 			header("Location: MANAGE_USER_PROFILE.php");
 			exit();
 		  } else {

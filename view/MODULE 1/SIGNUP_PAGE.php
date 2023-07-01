@@ -22,7 +22,7 @@
         <!--container box-->
 
         <div class="login_content">
-        <img src="../../asset/style/logo.png" alt="logo">
+        <img src=".../../asset/style/logo.png" alt="logo">
 
         <center>
         <?php if (isset($_SESSION['error']))  ?>
