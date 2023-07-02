@@ -42,7 +42,7 @@ $types = $_POST['type'] ;
 			// Start session and redirect to homepage
 			session_start();
 			$_SESSION['expert'] = $ID;
-			header("Location: ../../view/MODULE 3/HomePage.php");
+			header("Location: ../../view/MODULE 3/M3-Publi(Display).php");
 			exit();
 
 		  } else {
