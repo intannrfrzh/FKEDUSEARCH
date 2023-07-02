@@ -37,7 +37,7 @@
   </form>
 
   <?php
-  //join tables
+  //join tables (camments with post tables)
     $query="
     SELECT *
     FROM posts
