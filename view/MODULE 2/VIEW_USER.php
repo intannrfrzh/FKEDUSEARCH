@@ -23,7 +23,8 @@
 </head>
 <body>
     <!-- Start your project here-->
-
+    
+    
     <!-- heading with navbar -->
     <?php
     include_once '../../asset/bar/heading.html';
@@ -38,59 +39,8 @@
             <form class="form1" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
 
                 <center>
-                    <h1>VIEW ADMIN</h1>
-                    <hr class="border border-dark border-2 opacity-50">
-                    <!--form to view the admin's data-->
-                    <div class="row mb-3">
-                        <label for="Account_ID" class="col-sm-3 col-form-label">ACCOUNT ID:</label>
-                        <div class="col-sm-9">
-                            <input class="form-control" type="text" name="Account_ID" value="<?php echo $Account_ID; ?>" readonly>
-                        </div>
-                    </div>
-                    <br>
-
-                    <div class="row mb-3">
-                        <label for="Admin_Name" class="col-sm-3 col-form-label">NAME:</label>
-                        <div class="col-sm-9">
-                            <input class="form-control" type="text" name="Name" id="Admin_Name" value="<?php echo $Admin_Name; ?>">
-                        </div>
-                    </div>
-                    <br>
-
-                    <div class="row mb-3">
-                        <label for="Admin_IC" class="col-sm-3 col-form-label">IC NUMBER:</label>
-                        <div class="col-sm-9">
-                            <input class="form-control" type="text" name="IC" id="Admin_IC" value="<?php echo $Admin_IC; ?>">
-                        </div>
-                    </div>
-                    <br>
-
-                    <div class="row mb-3">
-                        <label for="Admin_Phone_Num" class="col-sm-3 col-form-label">PHONE NUMBER:</label>
-                        <div class="col-sm-9">
-                            <input class="form-control" name="PhoneNo" id="Admin_Phone_Num" value="<?php echo $Admin_Phone_Num; ?>">
-                        </div>
-                    </div>
-                    <br>
-
-                    <div class="row mb-3">
-                        <label for="Admin_Pass" class="col-sm-3 col-form-label">PASSWORD:</label>
-                        <div class="col-sm-9">
-                            <input class="form-control" type="text" name="Admin_Pass" id="Admin_Pass" value="<?php echo $Admin_Pass; ?>">
-                        </div>
-                    </div>
-                    <br>
-
-                    <!--button-->
-                    <div class="right-allign-button">
-                        <input class="btn btn-light" type="submit" name="submit" value="Update">
-                        <a class="btn btn-light" href="MANAGE_USER_PROFILE.php"><ion-icon name="checkmark-sharp"></ion-icon></a>
-                    </div>
-
-                </center>
-            </form>
-
-            <!-- Print the general_users table -->
+                    <h1>VIEW USER</h1>
+                    <!-- Print the general_users table -->
             <?php
             echo "<h2>General Users Table</h2>";
             echo "<table>";
@@ -129,6 +79,11 @@
             }
             echo "</table>";
             ?>
+
+                </center>
+            </form>
+
+            
 
         </div>
         <!--footer-->
