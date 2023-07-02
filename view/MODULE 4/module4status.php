@@ -20,8 +20,11 @@
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $submitValue = isset($_POST["submit"]) ? $_POST["submit"] : null;
+
   switch ($submitValue) {
+
     case "resolve":
+
         $update = "UPDATE reportlist SET Report_Stat='Resolved' WHERE USERID = '$userId'";
         if(mysqli_query($connect,$update))
         {
@@ -34,8 +37,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         break;
 
     case "onhold":
+
         $update = "UPDATE reportlist SET Report_Stat='On Hold' WHERE USERID = '$userId'";
-        mysqli_select_db($connect, "login");
+        mysqli_select_db($connect, "edusearch");
         if(mysqli_query($connect,$update))
         {
             header("Location:module4.php");

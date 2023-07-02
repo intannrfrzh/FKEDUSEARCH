@@ -6,7 +6,7 @@ include("../../db/database.php");
 if (isset($_POST['submit'])) {
 
     $selectedUserID = $_POST['submit'];
-    $pdo = new PDO('mysql:host=localhost;dbname=login', 'root', '');
+    $pdo = new PDO('mysql:host=localhost;dbname=edusearch', 'root', '');
     $userId = $selectedUserID;
 
     $query = "SELECT COUNT(*) as count FROM comments WHERE USERID = :UserActivityID";
