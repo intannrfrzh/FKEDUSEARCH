@@ -1,5 +1,15 @@
 <html>
 
+<?php
+//start session
+session_start();
+// Retrieve the user ID from the query parameter
+$Account_ID = $_SESSION['expert'];
+
+// Access the user ID
+echo 'User ID: ' . $Account_ID;
+?>
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -22,6 +32,42 @@
     <!--ionicon links-->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <style>
+        button{
+            background-color: #1E8844; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius:12px;
+        }
+
+        option, select{/* Green */
+            border: none;
+            color: black;
+            padding: 15px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius:12px;
+        }
+        
+
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+    </style>
 </head>
 
 <body>
@@ -81,7 +127,7 @@ $result = $connect->query("SELECT * FROM complaint WHERE ComplaintID ='$Complain
         </select><br><br>
         
         <label for="description">Description:</label><br>
-        <textarea name="description" id="description" cols="50" rows="15" placeholder="<?php echo $complaint['c_desc']; ?>" readonly></textarea><br><br>
+        <textarea name="description" id="description" cols="50" rows="15" style="background-color:#67EEB5;" placeholder="<?php echo $complaint['c_desc']; ?>" readonly></textarea><br><br>
         
         <!--<input type="submit" name="submit" value="Update">&nbsp;-->
         <a href="clist_e.php"><button type="button">Back</button></a>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2023 at 10:42 PM
+-- Generation Time: Jul 01, 2023 at 07:51 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -29,10 +29,17 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admin` (
   `Admin_Name` varchar(100) NOT NULL,
-  `Admin_Phone_Num` varchar(100) NOT NULL,
-  `Admin_IC` varchar(100) NOT NULL,
+  `Admin_Phone_Num` varchar(100) DEFAULT NULL,
+  `Admin_IC` varchar(100) DEFAULT NULL,
   `Account_ID` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`Admin_Name`, `Admin_Phone_Num`, `Admin_IC`, `Account_ID`) VALUES
+('SARA', '012', '01', 'AD21001');
 
 -- --------------------------------------------------------
 
@@ -46,6 +53,13 @@ CREATE TABLE `area_of_research` (
   `Total_R` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `area_of_research`
+--
+
+INSERT INTO `area_of_research` (`ResearchID`, `ResearchTopic`, `Total_R`) VALUES
+('RS001', 'DESIGN', '21');
+
 -- --------------------------------------------------------
 
 --
@@ -55,12 +69,26 @@ CREATE TABLE `area_of_research` (
 CREATE TABLE `comments` (
   `id` int(255) NOT NULL,
   `topic_id` varchar(255) NOT NULL,
-  `name` varchar(10000) NOT NULL,
-  `comment` mediumtext NOT NULL,
+  `name` varchar(1000) NOT NULL,
+  `comment` varchar(3000) NOT NULL,
   `date` date NOT NULL,
   `month` varchar(255) NOT NULL,
   `ex1` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `topic_id`, `name`, `comment`, `date`, `month`, `ex1`) VALUES
+(1, '3', 'user', 'test', '2023-06-11', 'Jun', ''),
+(2, '3', 'user', 'test', '2023-06-11', 'Jun', ''),
+(3, '3', 'user', 'test', '2023-06-11', 'Jun', ''),
+(4, '3', 'user', 'hi', '2023-06-11', 'Jun', ''),
+(5, '3', 'user', 'hi', '2023-06-11', 'Jun', ''),
+(6, '3', 'user', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati vitae ullam earum. Quas est error aut corrupti voluptatibus officiis possimus explicabo nesciunt? Dolorem ducimus officia velit illum iusto, vel harum.', '2023-06-11', 'Jun', ''),
+(7, '19', 'user', 'hello jani', '2023-06-11', 'Jun', ''),
+(9, '23', 'user', 'nice post i have ever seen', '2023-06-11', 'Jun', '');
 
 -- --------------------------------------------------------
 
@@ -73,12 +101,19 @@ CREATE TABLE `complaint` (
   `Complaint_Type` varchar(50) NOT NULL,
   `Complaint_Status` varchar(50) NOT NULL,
   `Total_C_Week` int(11) NOT NULL,
-  `Complaint_DateTime` datetime NOT NULL DEFAULT current_timestamp(),
+  `Complaint_Date` date NOT NULL,
   `c_desc` varchar(200) NOT NULL,
   `Account_ID` varchar(100) NOT NULL,
   `Admin_Name` varchar(100) NOT NULL,
   `E_name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `complaint`
+--
+
+INSERT INTO `complaint` (`ComplaintID`, `Complaint_Type`, `Complaint_Status`, `Total_C_Week`, `Complaint_Date`, `c_desc`, `Account_ID`, `Admin_Name`, `E_name`) VALUES
+(2, 'Unsatisfied Experts\'s Feedback', '', 0, '0000-00-00', 'zayam', 'CB2003', 'SARA', 'SARA');
 
 -- --------------------------------------------------------
 
@@ -102,15 +137,22 @@ CREATE TABLE `cv` (
 
 CREATE TABLE `experts` (
   `E_name` varchar(100) NOT NULL,
-  `E_age` int(11) NOT NULL,
-  `E_socmed` varchar(100) NOT NULL,
-  `E_uni` varchar(100) NOT NULL,
-  `E_course` varchar(100) NOT NULL,
-  `E_skill` varchar(100) NOT NULL,
-  `E_scholarship` varchar(100) NOT NULL,
-  `E_acastat` varchar(100) NOT NULL,
+  `E_age` int(11) DEFAULT NULL,
+  `E_socmed` varchar(100) DEFAULT NULL,
+  `E_uni` varchar(100) DEFAULT NULL,
+  `E_course` varchar(100) DEFAULT NULL,
+  `E_skill` varchar(100) DEFAULT NULL,
+  `E_scholarship` varchar(100) DEFAULT NULL,
+  `E_acastat` varchar(100) DEFAULT NULL,
   `Account_ID` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `experts`
+--
+
+INSERT INTO `experts` (`E_name`, `E_age`, `E_socmed`, `E_uni`, `E_course`, `E_skill`, `E_scholarship`, `E_acastat`, `Account_ID`) VALUES
+('SARA', 21, '@sarady(instagram)', 'UMP', 'DESIGN', 'ADOBE', 'YAYASAN', 'DEGREE', 'EX20011');
 
 -- --------------------------------------------------------
 
@@ -133,12 +175,19 @@ CREATE TABLE `expert_publi` (
 
 CREATE TABLE `general_users` (
   `User_Name` varchar(100) NOT NULL,
-  `User_Age` varchar(100) NOT NULL,
-  `User_Socmed` varchar(100) NOT NULL,
-  `User_AcademicStats` varchar(100) NOT NULL,
-  `ResearchID` varchar(100) NOT NULL,
+  `User_Age` int(11) DEFAULT NULL,
+  `User_Socmed` varchar(100) DEFAULT NULL,
+  `User_AcademicStats` varchar(100) DEFAULT NULL,
+  `ResearchID` varchar(100) DEFAULT NULL,
   `Account_ID` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `general_users`
+--
+
+INSERT INTO `general_users` (`User_Name`, `User_Age`, `User_Socmed`, `User_AcademicStats`, `ResearchID`, `Account_ID`) VALUES
+('UMAR', 20, '@umar(instagram)', 'DEGREE', 'RS001', 'CB21001');
 
 -- --------------------------------------------------------
 
@@ -148,14 +197,41 @@ CREATE TABLE `general_users` (
 
 CREATE TABLE `posts` (
   `id` int(255) NOT NULL,
-  `topic` varchar(10000) NOT NULL,
-  `description` mediumtext NOT NULL,
+  `topic` varchar(1000) NOT NULL,
+  `description` varchar(3000) NOT NULL,
   `date` date NOT NULL,
   `month` varchar(255) NOT NULL,
   `ex1` int(255) NOT NULL,
   `ex2` int(255) NOT NULL,
   `ex3` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `topic`, `description`, `date`, `month`, `ex1`, `ex2`, `ex3`) VALUES
+(3, 'hello', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam magni laboriosam est molestias quibusdam dolorem illum nemo, perspiciatis voluptatibus voluptates! Dicta praesentium est deserunt unde aliquam, incidunt ratione ut magni!\r\n', '2023-06-09', 'Jun', 0, 0, 0),
+(4, 'topic', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam magni laboriosam est molestias quibusdam dolorem illum nemo, perspiciatis voluptatibus voluptates! Dicta praesentium est deserunt unde aliquam, incidunt ratione ut magni!\r\n', '2023-06-09', 'Jun', 0, 0, 0),
+(5, 'topic', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam magni laboriosam est molestias quibusdam dolorem illum nemo, perspiciatis voluptatibus voluptates! Dicta praesentium est deserunt unde aliquam, incidunt ratione ut magni!\r\n', '2023-06-08', 'Jun', 0, 0, 0),
+(6, 'topic', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam magni laboriosam est molestias quibusdam dolorem illum nemo, perspiciatis voluptatibus voluptates! Dicta praesentium est deserunt unde aliquam, incidunt ratione ut magni!\r\n', '2023-06-11', 'Jun', 0, 0, 0),
+(7, 'topic', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam magni laboriosam est molestias quibusdam dolorem illum nemo, perspiciatis voluptatibus voluptates! Dicta praesentium est deserunt unde aliquam, incidunt ratione ut magni!\r\n', '2023-06-07', 'Jun', 0, 0, 0),
+(8, 'topic', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam magni laboriosam est molestias quibusdam dolorem illum nemo, perspiciatis voluptatibus voluptates! Dicta praesentium est deserunt unde aliquam, incidunt ratione ut magni!\r\n', '2023-06-07', 'Jun', 0, 0, 0),
+(9, 'topic', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam magni laboriosam est molestias quibusdam dolorem illum nemo, perspiciatis voluptatibus voluptates! Dicta praesentium est deserunt unde aliquam, incidunt ratione ut magni!\r\n', '2023-06-06', 'Jun', 0, 0, 0),
+(10, 'topic', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam magni laboriosam est molestias quibusdam dolorem illum nemo, perspiciatis voluptatibus voluptates! Dicta praesentium est deserunt unde aliquam, incidunt ratione ut magni!\r\n', '2023-06-06', 'Jun', 0, 0, 0),
+(11, 'topic', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam magni laboriosam est molestias quibusdam dolorem illum nemo, perspiciatis voluptatibus voluptates! Dicta praesentium est deserunt unde aliquam, incidunt ratione ut magni!\r\n', '2023-06-06', 'Jun', 0, 0, 0),
+(12, 'topic', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam magni laboriosam est molestias quibusdam dolorem illum nemo, perspiciatis voluptatibus voluptates! Dicta praesentium est deserunt unde aliquam, incidunt ratione ut magni!\r\n', '2023-06-05', 'Jun', 0, 0, 0),
+(13, 'topic', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam magni laboriosam est molestias quibusdam dolorem illum nemo, perspiciatis voluptatibus voluptates! Dicta praesentium est deserunt unde aliquam, incidunt ratione ut magni!\r\n', '2023-06-05', 'Jun', 0, 0, 0),
+(14, 'topic', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam magni laboriosam est molestias quibusdam dolorem illum nemo, perspiciatis voluptatibus voluptates! Dicta praesentium est deserunt unde aliquam, incidunt ratione ut magni!\r\n', '2023-06-04', 'Jun', 0, 0, 0),
+(15, 'New Discussion', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam magni laboriosam est molestias quibusdam dolorem illum nemo, perspiciatis voluptatibus voluptates! Dicta praesentium est deserunt unde aliquam, incidunt ratione ut magni!\r\n', '2023-06-10', 'Jun', 0, 0, 0),
+(16, 'topic', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam magni laboriosam est molestias quibusdam dolorem illum nemo, perspiciatis voluptatibus voluptates! Dicta praesentium est deserunt unde aliquam, incidunt ratione ut magni!\r\n', '2023-06-10', 'Jun', 0, 0, 0),
+(17, 'topic', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam magni laboriosam est molestias quibusdam dolorem illum nemo, perspiciatis voluptatibus voluptates! Dicta praesentium est deserunt unde aliquam, incidunt ratione ut magni!\r\n', '2023-06-10', 'Jun', 0, 0, 0),
+(18, 'topic', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam magni laboriosam est molestias quibusdam dolorem illum nemo, perspiciatis voluptatibus voluptates! Dicta praesentium est deserunt unde aliquam, incidunt ratione ut magni!\r\n', '2023-06-10', 'Jun', 0, 0, 0),
+(19, 'hello to the topic', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam magni laboriosam est molestias quibusdam dolorem illum nemo, perspiciatis voluptatibus voluptates! Dicta praesentium est deserunt unde aliquam, incidunt ratione ut magni!\r\n', '2023-06-11', 'Jun', 0, 0, 0),
+(20, 'topic', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam magni laboriosam est molestias quibusdam dolorem illum nemo, perspiciatis voluptatibus voluptates! Dicta praesentium est deserunt unde aliquam, incidunt ratione ut magni!\r\n', '2023-06-11', 'Jun', 0, 0, 0),
+(21, 'My new topic', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam magni laboriosam est molestias quibusdam dolorem illum nemo, perspiciatis voluptatibus voluptates! Dicta praesentium est deserunt unde aliquam, incidunt ratione ut magni!\r\n', '2023-06-11', 'Jun', 0, 0, 0),
+(22, 'Tell me about yourself.', 'This open-ended conversation starter is perfect because it invites the other person to reveal as much (or as little) about themselves as they want.', '2023-06-11', 'Jun', 0, 0, 0),
+(23, 'new', 'new description', '2023-06-11', 'Jun', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -187,6 +263,17 @@ CREATE TABLE `user_database` (
   `password` varchar(100) NOT NULL,
   `UserType` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_database`
+--
+
+INSERT INTO `user_database` (`Account_ID`, `password`, `UserType`) VALUES
+('AD21001', '122', 'admin'),
+('AD21002', '123', 'admin'),
+('CB2003', '123', 'guser'),
+('CB21001', '123', 'guser'),
+('EX20011', '123', 'expert');
 
 --
 -- Indexes for dumped tables
@@ -273,13 +360,13 @@ ALTER TABLE `user_database`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `complaint`
 --
 ALTER TABLE `complaint`
-  MODIFY `ComplaintID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ComplaintID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `expert_publi`
@@ -291,7 +378,7 @@ ALTER TABLE `expert_publi`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Constraints for dumped tables
@@ -301,15 +388,15 @@ ALTER TABLE `posts`
 -- Constraints for table `admin`
 --
 ALTER TABLE `admin`
-  ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`Account_ID`) REFERENCES `login`.`user_database` (`Account_ID`);
+  ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`Account_ID`) REFERENCES `user_database` (`Account_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `complaint`
 --
 ALTER TABLE `complaint`
-  ADD CONSTRAINT `complaint_ibfk_1` FOREIGN KEY (`Account_ID`) REFERENCES `login`.`user_database` (`Account_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `complaint_ibfk_1` FOREIGN KEY (`Account_ID`) REFERENCES `user_database` (`Account_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `complaint_ibfk_2` FOREIGN KEY (`Admin_Name`) REFERENCES `admin` (`Admin_Name`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `complaint_ibfk_3` FOREIGN KEY (`E_name`) REFERENCES `login`.`experts` (`E_name`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `complaint_ibfk_3` FOREIGN KEY (`E_name`) REFERENCES `experts` (`E_name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `experts`

@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+//start session
+session_start();
+// Retrieve the user ID from the query parameter
+$Account_ID = $_SESSION['user'];
+
+// Access the user ID
+echo 'User ID: ' . $Account_ID;
+?>
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -47,6 +57,17 @@
             font-size: 16px;
             border-radius:12px;
         }
+
+       
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
         
     </style>
 </head>
@@ -59,6 +80,11 @@
     <?php
 
     include_once '../../asset/bar/heading.html';
+    include("../../db/database.php");
+        $select = "SELECT * FROM user_database
+        JOIN complaint ON user_database.Account_ID = complaint.Account_ID
+        ";
+        $result = $connect->query($select);
     ?>
 
     <!-- main content -->

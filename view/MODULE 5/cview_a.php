@@ -1,10 +1,20 @@
 <html>
 
+<?php
+//start session
+session_start();
+// Retrieve the user ID from the query parameter
+$Account_ID = $_SESSION['admin'];
+
+// Access the user ID
+echo 'User ID: ' . $Account_ID;
+?>
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>COMPLAINT STATUS</title>
+    <title>COMPLAINT VIEW E</title>
     <!-- MDB icon -->
     <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
     <!-- Font Awesome -->
@@ -24,7 +34,7 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
     <style>
-        input{
+        button{
             background-color: #1E8844; /* Green */
             border: none;
             color: white;
@@ -57,6 +67,7 @@
     text-align: center;
 }
 
+        
     </style>
 </head>
 
@@ -106,22 +117,23 @@ $result = $connect->query("SELECT * FROM complaint WHERE ComplaintID ='$Complain
              ?>
 
 
-<form id="manage_complaint" class="table_content" action="updatestatus.php?id=<?php echo $complaint['ComplaintID']; ?>" method="post">
+<form id="manage_complaint" class="table_content">
     <center>
         <h1>COMPLAINT SECTION</h1>
-        
-        <label for="Complaint_Status">Complaint Status:</label>
-        <select name="Complaint_Status" id="Complaint_Status">
-            <option value="In Investigation">In Investigation</option>
-            <option value="On Hold">On Hold</option>
-            <option value="Resolved">Resolved</option>
+
+        <label for="Complaint_Type">Complaint Type:</label>
+        <select name="Complaint_Type" id="Complaint_Type" disabled>
+            <option value="Unsatisfied Experts Feedback">Unsatisfied Expert's Feedback</option>
+            <option value="Wrongly Assigned Research Area">Wrongly Assigned Research Area</option>
         </select><br><br>
         
-        <input type="submit" name="submit" value="Update">&nbsp;
-    
+        <label for="description">Description:</label><br>
+        <textarea name="description" id="description" cols="50" rows="15" style="background-color:#67EEB5;" placeholder="<?php echo $complaint['c_desc']; ?>" readonly></textarea><br><br>
+        
+        <!--<input type="submit" name="submit" value="Update">&nbsp;-->
+        <a href="clist_a.php"><button type="button">Back</button></a>
     </center>
 </form>
-
 
 <?php
 // Check if the form is submitted

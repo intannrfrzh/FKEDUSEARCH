@@ -65,7 +65,7 @@
         -->
         
         <br>
-        <center><a href="../../view/MODULE 1/SIGNUP_PAGE.php" class="link_class">Create Account</a></center>
+        <center><a href="SIGNUP_PAGE.php" class="link_class">Create Account</a></center>
         <a href="#" class="link_class">Forgot Password</a>
         <a> | </a>
         <a href="#" class="link_class">Help</a>

@@ -1,5 +1,15 @@
 <html>
 
+<?php
+//start session
+session_start();
+// Retrieve the user ID from the query parameter
+$Account_ID = $_SESSION['user'];
+
+// Access the user ID
+echo 'User ID: ' . $Account_ID;
+?>
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -22,6 +32,17 @@
     <!--ionicon links-->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <style>
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+</style>
 </head>
 
 <body>
@@ -54,9 +75,9 @@
         <thead>
         <tr>
             <th>NO</th>
-            <th>Expert ID</th>
+            <th>Expert Name</th>
             <th>Complaint ID</th>
-            <th>DateTime</th>
+            <th>Date</th>
             <th>Complaint type</th>
             <th>Description</th>
             <th>Complaint Status</th>
@@ -76,7 +97,7 @@
              ?>
                 <tr>
                     <td><?php echo $i; ?></td>
-                    <td><?php echo $complaint['Experts_ID'] ?></td>
+                    <td><?php echo $complaint['E_name'] ?></td>
                     <td><?php echo $complaint['ComplaintID'] ?></td>
                     <td><?php echo $complaint['Complaint_Date'] ?></td>
                      <td><?php echo $complaint['Complaint_Type'] ?></td>

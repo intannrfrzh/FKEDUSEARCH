@@ -1,5 +1,15 @@
 <html>
 
+<?php
+//start session
+session_start();
+// Retrieve the user ID from the query parameter
+$Account_ID = $_SESSION['admin'];
+
+// Access the user ID
+echo 'User ID: ' . $Account_ID;
+?>
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -22,6 +32,17 @@
     <!--ionicon links-->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <style>
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+</style>
 
 </head>
 
@@ -50,7 +71,7 @@
                     </center>
                     <hr class="border border-dark border-2 opacity-50" style="width: 70%;">
 
-                    <label><b>Report of the Week:</b></label>
+                    <label><b>Daily Report:</b></label>
                     <button type="button"><span class="button__icon"><a href="creport_a.php?"><ion-icon
                                     name="file-tray-full-outline"></ion-icon></a></span></button><br><br></left>
 
@@ -60,9 +81,9 @@
                             <thead>
                                 <tr>
                                     <th>NO</th>
-                                    <th>Expert ID</th>
+                                    <th>Expert Name</th>
                                     <th>Complaint ID</th>
-                                    <th>DateTime</th>
+                                    <th>Date</th>
                                     <th>Complaint type</th>
                                     <th>Description</th>
                                     <th>Complaint Status</th>
@@ -85,7 +106,7 @@
                                             <?php echo $i; ?>
                                         </td>
                                         <td>
-                                            <?php echo $complaint['Experts_ID'] ?>
+                                            <?php echo $complaint['E_name'] ?>
                                         </td>
                                         <td>
                                             <?php echo $complaint['ComplaintID'] ?>
@@ -110,6 +131,9 @@
                                             <button type="button"><span class="button__icon"><a
                                                         href="cdelete_u.php?id=<?php echo $complaint['ComplaintID']; ?>"><ion-icon
                                                             name="trash-outline"></ion-icon></a></span></button>
+                                                            <button type="button"><span class="button__icon"><a
+                                                        href="cview_a.php?id=<?php echo $complaint['ComplaintID']; ?>"><ion-icon
+                                                            name="eye-outline"></ion-icon></a></span></button>
                                         </td>
 
                                     </tr>

@@ -1,5 +1,15 @@
 <html>
 
+<?php
+//start session
+session_start();
+// Retrieve the user ID from the query parameter
+$Account_ID = $_SESSION['admin'];
+
+// Access the user ID
+echo 'User ID: ' . $Account_ID;
+?>
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -46,17 +56,18 @@
                 <!--list of registered admin-->
                 <form id="manage_user" class="table_content" method="post">
                     <center>
-                        <h2 class="list">ADMIN LIST</h2>
+                        <h2 class="list">REGISTERED USER LIST</h2>
                         <hr class="border border-dark border-2 opacity-50" style="width: 70%;">
                         <table class="table table-success table-striped-columns table-bordered border-black">
                             <thead>
                                 <tr>
                                     <th>No</th>
                                     <th>User ID</th>
-                                    <th>Username</th>
+                                    
                                     <th>User Type</th>
                                     <th>USER ACTION</th>
                                 </tr>
+
                             </thead>
 
                             <tbody id="table-body">
@@ -64,16 +75,15 @@
                                 <?php
 
                                 include("../../db/database.php");
-                                $select_a = "SELECT * FROM user_database
-                             JOIN admin ON user_database.Account_ID = admin.Account_ID
-                              ";
-                                $result = $connect->query($select_a);
+                                $select = "SELECT * FROM user_database";
+
+                                $result = $connect->query($select);
 
                                 $i = 1;
 
                                 while ($row = $result->fetch_assoc()) {
                                     ?>
-                                    <!--NO / USER ID/ USERNAME / USER TYPE / USER ACTION-->
+                                    <!--NO / USER ID / USER TYPE / USER ACTION-->
                                     <tr>
                                         <td>
                                             <?php echo $i; ?>
@@ -81,9 +91,7 @@
                                         <td>
                                             <?php echo $row['Account_ID'] ?>
                                         </td>
-                                        <td>
-                                            <?php echo $row['Admin_Name']; ?>
-                                        </td>
+                                        
                                         <td>
                                             <?php echo $row['UserType'] ?>
                                         </td>
@@ -107,134 +115,7 @@
 
                         </table>
                     </center>
-                    <br>
-                    <!--list of registered user-->
-                    <center>
-                        <h2 class="list">USER LIST</h2>
-                        <hr class="border border-dark border-2 opacity-50" style="width: 70%;">
-                        <table class="table table-success table-striped-columns table-bordered border-black">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>User ID</th>
-                                    <th>Username</th>
-                                    <th>User Type</th>
-                                    <th>USER ACTION</th>
-                                </tr>
-                            </thead>
-
-                            <tbody id="table-body">
-                                <!--CALL DATA FROM DATABASE-->
-                                <?php
-
-                                include("../../db/database.php");
-                                //$select = "SELECT * FROM user_database";
-                                $select_u = "SELECT * FROM user_database
-                                 JOIN general_users ON user_database.Account_ID = general_users.Account_ID
-                                ";
-                                $result = $connect->query($select_u);
-
-                                $i = 1;
-
-                                while ($row = $result->fetch_assoc()) {
-                                    ?>
-                                    <!--NO / USER ID/ USERNAME / USER TYPE / USER ACTION-->
-                                    <tr>
-                                        <td>
-                                            <?php echo $i; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $row['Account_ID'] ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $row['User_Name']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $row['UserType'] ?>
-                                        </td>
-                                        <!--EDIT / DELETE-->
-                                        <td>
-                                            <center>
-                                            <a class="btn btn-light" href="../MODULE 1/VIEW_ADMIN.php?id=<?php echo $row['Account_ID']; ?>">
-                                                        <ion-icon name="pencil-sharp"></ion-icon></a>
-                                                    <a class="btn btn-light" href="deleteuser.php?id=<?php echo $row['Account_ID']; ?>"><ion-icon
-                                                            name="trash-outline"></ion-icon></a>
-                                            </center>
-                                        </td>
-
-                                    </tr>
-
-                                    <?php
-                                    $i++;
-                                }
-                                ?>
-                            </tbody>
-
-                        </table>
-                    </center>
-                    <br>
-                    <!--list of registered expert-->
-                    <center>
-                        <h2 class="list">EXPERT LIST</h2>
-                        <hr class="border border-dark border-2 opacity-50" style="width: 70%;">
-                        <table class="table table-success table-striped-columns table-bordered border-black">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>User ID</th>
-                                    <th>Username</th>
-                                    <th>User Type</th>
-                                    <th>USER ACTION</th>
-                                </tr>
-                            </thead>
-
-                            <tbody id="table-body">
-                                <!--CALL DATA FROM DATABASE-->
-                                <?php
-
-                                include("../../db/database.php");
-                                $select_e = "SELECT * FROM user_database
-                               JOIN experts ON user_database.Account_ID = experts.Account_ID
-                               ";
-                                $result = $connect->query($select_e);
-
-                                $i = 1;
-
-                                while ($row = $result->fetch_assoc()) {
-                                    ?>
-                                    <!--NO / USER ID/ USERNAME / USER TYPE / USER ACTION-->
-                                    <tr>
-                                        <td>
-                                            <?php echo $i; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $row['Account_ID'] ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $row['E_name']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $row['UserType'] ?>
-                                        </td>
-                                        <!--EDIT / DELETE-->
-                                        <td>
-                                            <center>
-                                            <a class="btn btn-light" href="../MODULE 1/VIEW_ADMIN.php?id=<?php echo $row['Account_ID']; ?>">
-                                                        <ion-icon name="pencil-sharp"></ion-icon></a>
-                                                    <a class="btn btn-light" href="deleteuser.php?id=<?php echo $row['Account_ID']; ?>"><ion-icon
-                                                            name="trash-outline"></ion-icon></a>
-                                            </center>
-                                        </td>
-                                    </tr>
-
-                                    <?php
-                                    $i++;
-                                }
-                                ?>
-                            </tbody>
-
-                        </table>
-                    </center>
+                    
                 </form>
 
             </div>
