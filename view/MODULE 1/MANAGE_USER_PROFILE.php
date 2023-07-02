@@ -63,7 +63,7 @@ echo 'User ID: ' . $Account_ID;
                                 <tr>
                                     <th>No</th>
                                     <th>User ID</th>
-                                    
+
                                     <th>User Type</th>
                                     <th>USER ACTION</th>
                                 </tr>
@@ -91,17 +91,21 @@ echo 'User ID: ' . $Account_ID;
                                         <td>
                                             <?php echo $row['Account_ID'] ?>
                                         </td>
-                                        
+
                                         <td>
                                             <?php echo $row['UserType'] ?>
                                         </td>
                                         <!--EDIT / DELETE-->
                                         <td>
                                             <center>
-                                                    <a class="btn btn-light" href="../MODULE 1/VIEW_ADMIN.php?id=<?php echo $row['Account_ID']; ?>">
-                                                        <ion-icon name="pencil-sharp"></ion-icon></a>
-                                                    <a class="btn btn-light" href="deleteuser.php?id=<?php echo $row['Account_ID']; ?>"><ion-icon
-                                                            name="trash-outline"></ion-icon></a>
+                                                <a class="btn btn-light"
+                                                    href="../MODULE 1/VIEW_ADMIN.php?id=<?php echo $row['Account_ID']; ?>&type=<?php echo $row['UserType']; ?>">
+                                                    <ion-icon name="pencil-sharp"></ion-icon>
+                                                </a>
+
+                                                <a class="btn btn-light"
+                                                    href="deleteuser.php?id=<?php echo $row['Account_ID']; ?>"><ion-icon
+                                                        name="trash-outline"></ion-icon></a>
                                             </center>
                                         </td>
 
@@ -115,7 +119,7 @@ echo 'User ID: ' . $Account_ID;
 
                         </table>
                     </center>
-                    
+
                 </form>
 
             </div>
