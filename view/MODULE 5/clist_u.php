@@ -6,8 +6,6 @@ session_start();
 // Retrieve the user ID from the query parameter
 $Account_ID = $_SESSION['user'];
 
-// Access the user ID
-echo 'User ID: ' . $Account_ID;
 ?>
 
 <head>
@@ -51,7 +49,7 @@ echo 'User ID: ' . $Account_ID;
     <!-- heading with navbar -->
     <?php
 
-    include_once '../../asset/bar/heading.html';
+    include_once '../../asset/bar/userheading.html';
     ?>
 
     <!-- main content -->

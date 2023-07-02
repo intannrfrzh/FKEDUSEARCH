@@ -6,16 +6,26 @@ session_start();
 // Retrieve the user ID from the query parameter
 $Account_ID = $_SESSION['user'];
 
-// Access the user ID
-echo 'User ID: ' . $Account_ID;
 ?>
     
     <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
         <title>Post module</title>
         <?php include('../../asset/container/links.php'); ?>
+        
     </head>
     <body>
     <div class="wrapper">
+
+    <!-- heading with navbar -->
+
+    <?php
+
+    include_once '../../asset/bar/userheading.html';
+    ?>
+
         <!-- Sidebar  -->
         <?php include("../../asset/container/navbar.php"); ?>
 
@@ -111,6 +121,16 @@ echo 'User ID: ' . $Account_ID;
         });
     });
 </script>
+
+ <!--footer-->
+ <footer class="footer">
+            <div class="footer_container">
+                <div class="footer__inner">
+                    <center> ©FK-EduSearch.com.my </center>
+                </div>
+            </div>
+    </center>
+    </footer>
 
 
     </body>

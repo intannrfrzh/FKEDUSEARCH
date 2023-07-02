@@ -29,10 +29,7 @@ $types = $_POST['type'] ;
 			echo '<script>window.history.back();</script>';
 
 		  }
-		  
-		  
-        
-		
+	
 	}	 
 	elseif ($types == "expert") 
 	{

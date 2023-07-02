@@ -1,14 +1,22 @@
+<?php
+//start session
+session_start();
+// Retrieve the user ID from the query parameter
+$Account_ID = $_SESSION['expert'];
+
+?>
+
 <?php 
     
-    include("db/database.php");
-    $select = "SELECT * FROM expert WHERE Experts_ID = 'E601'";
+    include("../../db/database.php");
+    $select = "SELECT * FROM `experts` WHERE Account_ID = '$Account_ID'";
     $result = mysqli_query($connect,$select);
     $array = mysqli_fetch_assoc($result);
     
 ?>
 <?php 
     
-    include("db/database.php");
+    include("../../db/database.php");
     $select1 = "SELECT * FROM cv WHERE EXPERT_CV_ID= 'CV0001'";
     $result1 = mysqli_query($connect,$select1);
     $array1 = mysqli_fetch_assoc($result1);
@@ -16,16 +24,16 @@
 ?>
 <?php 
     
-    include("db/database.php");
-    $select2 = "SELECT * FROM publication_list WHERE PublicationID= 'PB1223'";
+    include("../../db/database.php");
+    $select2 = "SELECT * FROM expert_publi WHERE P_ID= 'PB1223'";
     $result2 = mysqli_query($connect,$select2);
     $array2 = mysqli_fetch_assoc($result2);
     
 ?>
 <?php 
     
-    include("db/database.php");
-    $select3 = "SELECT * FROM area_of_research WHERE ResearchID = 'R0012'";
+    include("../../db/database.php");
+    $select3 = "SELECT * FROM area_of_research WHERE ResearchID = 'RS001'";
     $result3 = mysqli_query($connect,$select3);
     $array3 = mysqli_fetch_assoc($result3);
     
@@ -33,9 +41,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>M3 EXPERT PROFILE (UPDATE) </title>
+    <!-- MDB icon -->
+    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+    <!-- MDB -->
+    <link rel="stylesheet" href="../../Bootstrap//mdb.min.css" />
+
+    <!-- css link -->
+    <link rel="stylesheet" href="../../asset/style/newstyle.css">
+
+    <!--ionicon links-->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <!--FORMS  -->
     <style>
 input[type=text], select {
@@ -64,100 +90,81 @@ input[type=submit]:hover {
   background-color: #01579b;
 }
 
-div {
+
+div.inner-div {
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
 }
 
-/*NAV BAR */
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-li a:hover:not(.active) {
-  background-color: #01579b;
-}
-
-.active {
-  background-color: #81d4fa;
-}
 
 </style>
 </head>
 
 <body>
+<!-- Start your project here-->
+
+    <!-- heading with navbar -->
+
+    <?php
+
+    include_once '../../asset/bar/expertheading.html';
+    ?>
+
+<!-- main content -->
+<center>
+        <!--outer box-->
+        <div class="container-content">
+
+            <!--inner box-->
+            <div class="inner-content">
+                <!--start content here-->
+
+                <center> <h1>Expert Profile</h1></center>
 
 
-<ul>
-  <li><a class="" href="">Home Page</a></li>
-  <li><a class="active" >Manage Profile</a></li>
-  <li><a href="">Notification</a></li>
-  <li><a href=""> Ratings</a></li>
-</ul>
-
-<center> <h1>Expert Profile</h1></center>
-
-
-<div>
+<div class="inner-div">
 <h3>Account Profile</h3>
 
 
 
   <form action="/action_page.php">
     <label for="fname">Name</label>
-    <input type="text" id="fname" name="firstname"  placeholder="<?php echo $array['Experts_Name']; ?>">
+    <input type="text" id="fname" name="firstname"  placeholder="<?php echo $array['E_name']; ?>">
 
     <label for="lname">Password</label>
-    <input type="text" id="lname" name="lastname" placeholder="<?php echo $array['E_Password']; ?>">
+    <input type="text" id="lname" name="lastname" placeholder="<?php echo $array['password']; ?>">
 
     
     <label for="lname">Age</label>
-    <input type="text" id="lname" name="lastname" placeholder="<?php echo $array['Experts_Age']; ?>">
+    <input type="text" id="lname" name="lastname" placeholder="<?php echo $array['E_age']; ?>">
 
      
     <label for="lname">Instagram/Twitter/G-mail</label>
-    <input type="text" id="lname" name="lastname" placeholder="<?php echo $array['Experts_Socmed']; ?>">
+    <input type="text" id="lname" name="lastname" placeholder="<?php echo $array['E_socmed']; ?>">
 
     <h3>Curriculum Vitae</h3>
 
     <label for="lname">University Name </label>
-    <input type="text" id="lname" name="lastname" placeholder="<?php echo $array1['Uni_Name']; ?>">
+    <input type="text" id="lname" name="lastname" placeholder="<?php echo $array1['E_uni']; ?>">
  
     <label for="lname">Course Name </label>
-    <input type="text" id="lname" name="lastname" placeholder="<?php echo $array1['Course_Name']; ?>">
+    <input type="text" id="lname" name="lastname" placeholder="<?php echo $array1['E_course']; ?>">
 
     <label for="lname">Skills </label>
-    <input type="text" id="lname" name="lastname" placeholder="<?php echo $array1['Skills']; ?>">
+    <input type="text" id="lname" name="lastname" placeholder="<?php echo $array1['E_skill']; ?>">
     
     
     <label for="lname">Scholarship </label>
-    <input type="text" id="lname" name="lastname" placeholder="<?php echo $array1['Scholarships']; ?>">
+    <input type="text" id="lname" name="lastname" placeholder="<?php echo $array1['E_scholarships']; ?>">
     
     <label for="status">Academic Status</label>
     <select id="status" name="status">
-        <option value=""><?php echo $array['Experts_AcedemicStats']; ?></option>
-      <option value="">PHD</option>
-      <option value="">MASTER</option>
-      <option value="">DEGREE</option>
-      <option value="">DIPLOMA</option>
+        <option value=""><?php echo $array['E_acastat']; ?></option>
+      <option value="PHD">PHD</option>
+      <option value="MASTER">MASTER</option>
+      <option value="DEGREE">DEGREE</option>
+      <option value="DIPLOMA">DIPLOMA</option>
     </select>
 
     <label for="area">Area of research</label>
@@ -184,5 +191,33 @@ li a:hover:not(.active) {
     <input type="submit" value="Update">
   </form>
 </div>
+
+            </div>
+
+        </div>
+        
+        <!--footer-->
+        <footer class="footer">
+            <div class="footer_container">
+                <div class="footer__inner">
+                    <center> ©FK-EduSearch.com.my </center>
+                </div>
+            </div>
+    </center>
+    </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

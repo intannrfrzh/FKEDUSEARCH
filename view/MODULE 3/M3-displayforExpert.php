@@ -12,8 +12,8 @@ if (isset($_POST['submit'])) {
     $scholarship = $_POST['E_scholarship'];
     $acastat = $_POST['E_acastat'];
     
-    $sql = "INSERT INTO expert_PP (E_ID,E_password,E_name,E_age,E_socmed,E_uni,E_course,E_skill,E_scholarship,E_acastat) values('$id','$password','$name','$age','$socmed','$uni','$course','$skill','$scholarship','$acastat')";
-    $result = mysqli_query($con, $sql);
+    $sql = "INSERT INTO experts (E_ID,E_password,E_name,E_age,E_socmed,E_uni,E_course,E_skill,E_scholarship,E_acastat) values('$id','$password','$name','$age','$socmed','$uni','$course','$skill','$scholarship','$acastat')";
+    $result = mysqli_query($connect, $sql);
     if ($result) {
         echo '<center>' . "Data inserted successfully master Yana" . '</center>';
     } else {
@@ -61,7 +61,7 @@ if (isset($_POST['submit'])) {
 
 
                 <?php
-                $sql = "SELECT * FROM expert_PP WHERE E_ID = '$id' ";
+                $sql = "SELECT * FROM expert WHERE E_ID = '$id' ";
                 $result = mysqli_query($con, $sql);
                 $array = mysqli_fetch_assoc($result);
 

@@ -6,8 +6,7 @@ session_start();
 // Retrieve the user ID from the query parameter
 $Account_ID = $_SESSION['admin'];
 
-// Access the user ID
-echo 'User ID: ' . $Account_ID;
+
 ?>
 
 <head>
